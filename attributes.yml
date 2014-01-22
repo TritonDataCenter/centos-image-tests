@@ -5,10 +5,3 @@ centos-6-2.5.1:
   :version: 2.5.1
   :doc_url: http://wiki.joyent.com/jpc2/Centos
 
-centos-6-2.5.0:
-  :roles:
-    - centos 
-  :name: centos 6.4
-  :version: 2.5.0
-  :doc_url: http://wiki.joyent.com/jpc2/Centos
-
