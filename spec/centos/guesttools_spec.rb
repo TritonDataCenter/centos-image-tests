@@ -54,7 +54,7 @@ end
 # First, make sure the appropriate symlink is there
 describe file('/etc/rc.local') do
   it { should be_file }
-  it { should be_mode 755 }
+  it { should be_mode 777 }
   it { should be_linked_to '/etc/rc.d/rc.local' }
 end
 
