@@ -5,47 +5,47 @@ describe file('/lib/smartdc') do
   it { should be_directory }
 end
 
-describe file('format-secondary-disk') do
+describe file('/lib/smartdc/format-secondary-disk') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('joyent_rc.local') do
+describe file('/lib/smartdc/joyent_rc.local') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('lib_smartdc_scripts.cfg') do
+describe file('/lib/smartdc/lib_smartdc_scripts.cfg') do
   it { should be_file }
   it { should be_mode 644 }
 end
 
-describe file('product') do
+describe file('/lib/smartdc/product') do
   it { should be_file }
   it { should be_mode 644 }
 end
 
-describe file('redhat-powerbtn-acpi-support.sh') do
+describe file('/lib/smartdc/redhat-powerbtn-acpi-support.sh') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('run-operator-script') do
+describe file('/lib/smartdc/run-operator-script') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('run-user-script') do
+describe file('/lib/smartdc/run-user-script') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('send-arp-updates') do
+describe file('/lib/smartdc/send-arp-updates') do
   it { should be_file }
   it { should be_mode 755 }
 end
 
-describe file('set-root-authorized-keys') do
+describe file('/lib/smartdc/set-root-authorized-keys') do
   it { should be_file }
   it { should be_mode 755 }
 end
