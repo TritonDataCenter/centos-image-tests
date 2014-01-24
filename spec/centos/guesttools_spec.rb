@@ -98,8 +98,28 @@ describe file('/usr/sbin/mdata-delete') do
   it { should be_mode 755 }
 end
 
+describe file('/usr/share/man/man1/mdata-get.1') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
+describe file('/usr/share/man/man1/mdata-list.1') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
+describe file('/usr/share/man/man1/mdata-put.1') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
+describe file('/usr/share/man/man1/mdata-delete.1') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
+
 describe file('/lib/smartdc/mdata-get') do
 	it { should be_file }
 	it { should be_linked_to '/usr/sbin/mdata-get' }
 end
-
