@@ -6,7 +6,6 @@ describe file('/etc/acpi/events/powerbtn-acpi-support') do
   it { should be_mode 644 }
 end
 
-
 describe file('/lib/smartdc') do
   it { should be_directory }
 end
@@ -24,6 +23,12 @@ end
 describe file('/lib/smartdc/lib_smartdc_scripts.cfg') do
   it { should be_file }
   it { should be_mode 644 }
+end
+
+describe file('/lib/smartdc/mdata-get') do
+  it { should be_file }
+  it { should be_mode 777 }
+	it { should be_linked_to '/usr/sbin/mdata-get' }
 end
 
 describe file('/lib/smartdc/product') do
