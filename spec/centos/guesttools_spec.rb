@@ -69,7 +69,7 @@ describe file('/etc/rc.local') do
   it { should be_linked_to '/etc/rc.d/rc.local' }
 end
 
-# Check to seek if guest tools are run at boot
+# Check to see if guest tools are run at boot
 describe file('/etc/rc.d/rc.local') do
   it { should be_file }
   it { should be_mode 755 }
