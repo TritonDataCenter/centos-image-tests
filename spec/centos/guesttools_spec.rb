@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 # Ensures that smartdc guest tools are installed
+describe file('/etc/acpi/events/powerbtn-acpi-support') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
+
 describe file('/lib/smartdc') do
   it { should be_directory }
 end
@@ -64,7 +70,6 @@ describe file('/etc/rc.d/rc.local') do
   it { should be_mode 755 }
   it { should contain "(/lib/smartdc/joyent_rc.local)" }
 end
-
 
 # Since 2.5.1 See IMAGE-426.
 # Make sure new guest tools are installed
