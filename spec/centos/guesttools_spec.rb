@@ -31,11 +31,6 @@ describe file('/lib/smartdc/mdata-get') do
 	it { should be_linked_to '/usr/sbin/mdata-get' }
 end
 
-describe file('/lib/smartdc/product') do
-  it { should be_file }
-  it { should be_mode 644 }
-end
-
 describe file('/lib/smartdc/redhat-powerbtn-acpi-support.sh') do
   it { should be_file }
   it { should be_mode 755 }

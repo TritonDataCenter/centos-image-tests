@@ -5,7 +5,6 @@ require 'spec_helper'
 # product
 describe file('/etc/product') do
 	it { should be_file }
-  it { should be_linked_to '/lib/smartdc/product' }
 	it { should contain "Name: Joyent Instance" }
 	it { should contain "Image: #{attr[:name]} #{attr[:version]}" }
 	it { should contain "Documentation: #{attr[:doc_url]}" }
