@@ -10,6 +10,22 @@ describe file('/lib/smartdc') do
   it { should be_directory }
 end
 
+
+# Since 2.6.0 See IMAGE-446.
+describe file('/lib/smartdc/firstboot') do
+  it { should be_file }
+  it { should be_mode 755 }
+end
+
+# Since 2.6.0 See IMAGE-446.
+# The VM should have already gone through the first boot process
+# so this file should exists to prevent it running again see
+# /lib/smartdc/joyent_rc.local
+describe file('/lib/smartdc/.firstboot-complete-do-not-delete') do
+  it { should be_file }
+  it { should be_mode 644 }
+end
+
 describe file('/lib/smartdc/format-secondary-disk') do
   it { should be_file }
   it { should be_mode 755 }
@@ -71,7 +87,7 @@ describe file('/etc/rc.d/rc.local') do
   it { should contain "(/lib/smartdc/joyent_rc.local)" }
 end
 
-# Since 2.5.1 See IMAGE-426.
+# Since 2.6.0 See IMAGE-426.
 # Make sure new guest tools are installed
 describe file('/usr/sbin/mdata-get') do
   it { should be_file }
