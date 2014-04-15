@@ -1,7 +1,13 @@
+centos-6-2.6.1:
+  :roles:
+    - centos
+  :name: centos 6.5
+  :version: 2.6.1
+  :doc_url: http://wiki.joyent.com/jpc2/Centos
+
 centos-6-2.6.0:
   :roles:
-    - centos 
+    - centos
   :name: centos 6.5
   :version: 2.6.0
   :doc_url: http://wiki.joyent.com/jpc2/Centos
-
