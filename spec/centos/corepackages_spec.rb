@@ -2,21 +2,13 @@ require 'spec_helper'
 
 # Make sure we have the latest openssl to address HeartBleed bug
 # IMAGE-481
-if attr[:version].delete('.').to_i == 261
+if attr[:version].to_i < 20140709
 	describe package('openssl-1.0.1e-16.el6_5.7') do
   	it { should be_installed }
 	end
 end
 
 describe package('acpid') do
-  it { should be_installed }
-end
-
-describe package('duo_unix') do
-  it { should be_installed }
-end
-
-describe package('libduo') do
   it { should be_installed }
 end
 
@@ -37,10 +29,6 @@ describe package('ntp') do
 end
 
 describe package('ntpdate') do
-  it { should be_installed }
-end
-
-describe package('pam_duo') do
   it { should be_installed }
 end
 
