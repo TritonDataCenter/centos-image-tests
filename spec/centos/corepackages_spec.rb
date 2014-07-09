@@ -8,6 +8,16 @@ if attr[:version].to_i < 20140709
 	end
 end
 
+# Ensure latest availabe version of OpenSSL is installed
+# This will thow an error if openssl is newer but I want
+# to be explitily warned if teh version does not match
+# in future image versions.
+if attr[:version].to_i >= 20140709
+  describe package('openssl-1.0.1e-16.el6_5.14') do
+    it { should be_installed }
+  end
+end
+
 describe package('acpid') do
   it { should be_installed }
 end
