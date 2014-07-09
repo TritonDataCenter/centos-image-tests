@@ -38,7 +38,6 @@ end
 
 describe file('/lib/smartdc/lib_smartdc_scripts.cfg') do
   it { should be_file }
-  it { should be_mode 644 }
 end
 
 describe file('/lib/smartdc/mdata-get') do
