@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 # Ensures that smartdc guest tools are installed
-describe file('/etc/acpi/events/powerbtn-acpi-support') do
-  it { should be_file }
-  it { should be_mode 644 }
+# Not included in sdc-vmtools which we began using in newer builds
+if attr[:version].to_i  < 20140818
+	describe file('/etc/acpi/events/powerbtn-acpi-support') do
+  	it { should be_file }
+  	it { should be_mode 644 }
+	end
+
+	describe file('/lib/smartdc/redhat-powerbtn-acpi-support.sh') do
+  	it { should be_file }
+  	it { should be_executable }
+	end
 end
 
 describe file('/lib/smartdc') do
@@ -46,11 +54,6 @@ describe file('/lib/smartdc/mdata-get') do
 	it { should be_linked_to '/usr/sbin/mdata-get' }
 end
 
-describe file('/lib/smartdc/redhat-powerbtn-acpi-support.sh') do
-  it { should be_file }
-  it { should be_executable }
-end
-
 describe file('/lib/smartdc/run-operator-script') do
   it { should be_file }
   it { should be_executable }
@@ -80,10 +83,20 @@ describe file('/etc/rc.local') do
 end
 
 # Check to see if guest tools are run at boot
-describe file('/etc/rc.d/rc.local') do
-  it { should be_file }
-  it { should be_executable }
-  it { should contain "(/lib/smartdc/joyent_rc.local)" }
+
+# Newer builds use sdc-vmtools
+if attr[:version].to_i  < 20140818
+	describe file('/etc/rc.d/rc.local') do
+  	it { should be_file }
+  	it { should be_executable }
+		it { should contain "(/lib/smartdc/joyent_rc.local)" }
+	end	
+else
+  describe file('/etc/rc.d/rc.local') do
+    it { should be_file }
+    it { should be_executable }
+		it { should be_linked_to '/lib/smartdc/joyent_rc.local' }
+	end
 end
 
 # Since 2.6.0 See IMAGE-426.
