@@ -30,10 +30,12 @@ describe package('man') do
   it { should be_installed }
 end
 
-describe package('me-centos') do
-  it { should be_installed }
+# We use install sdc-vmtools in newer versions rather than the rpm package
+if attr[:version].to_i  < 20140818
+	describe package('me-centos') do
+  	it { should be_installed }
+	end
 end
-
 describe package('ntp') do
   it { should be_installed }
 end
