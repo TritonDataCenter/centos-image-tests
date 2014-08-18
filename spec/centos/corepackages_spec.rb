@@ -26,8 +26,14 @@ describe package('iputils') do
   it { should be_installed }
 end
 
-describe package('man') do
-  it { should be_installed }
+if attr[:name] != "CentOS 7.0-1406"
+	describe package('man') do
+  	it { should be_installed }
+	end
+else
+	describe package('man-db') do
+  	it { should be_installed }
+	end
 end
 
 # We use install sdc-vmtools in newer versions rather than the rpm package
