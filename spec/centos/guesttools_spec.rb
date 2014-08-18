@@ -75,14 +75,6 @@ describe file('/lib/smartdc/set-root-authorized-keys') do
 end
 
 ## Ensure the appropriate smartdc guest tools are run each boot
-# First, make sure the appropriate symlink is there
-describe file('/etc/rc.local') do
-  it { should be_file }
-  it { should be_executable }
-  it { should be_linked_to '/etc/rc.d/rc.local' }
-end
-
-# Check to see if guest tools are run at boot
 
 # Newer builds use sdc-vmtools
 if attr[:version].to_i  < 20140818
