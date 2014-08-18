@@ -5,13 +5,13 @@ require 'yaml'
 
 include Serverspec::Helper::Ssh
 include Serverspec::Helper::DetectOS
-include Serverspec::Helper::Attributes
+include Serverspec::Helper::Properties
 
-attributes = YAML.load_file('attributes.yml')
+properties = YAML.load_file('properties.yml')
 
 RSpec.configure do |c|
   c.host  = ENV['TARGET_HOST']
-  attr_set attributes[c.host]
+  set_property properties[c.host]
   options = Net::SSH::Config.for(c.host)
   user    = options[:user] || Etc.getlogin
   c.ssh   = Net::SSH.start(c.host, user, options)

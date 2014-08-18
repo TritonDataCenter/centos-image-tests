@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # Ensures that smartdc guest tools are installed
 # Not included in sdc-vmtools which we began using in newer builds
-if attr[:version].to_i  < 20140818
+if property[:version].to_i  < 20140818
 	describe file('/etc/acpi/events/powerbtn-acpi-support') do
   	it { should be_file }
   	it { should be_mode 644 }
@@ -77,7 +77,7 @@ end
 ## Ensure the appropriate smartdc guest tools are run each boot
 
 # Newer builds use sdc-vmtools
-if attr[:version].to_i  < 20140818
+if property[:version].to_i  < 20140818
 	describe file('/etc/rc.d/rc.local') do
   	it { should be_file }
   	it { should be_executable }

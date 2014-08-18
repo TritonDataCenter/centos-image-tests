@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 # CentOS 7 hase newer Grub
-if attr[:name] != "CentOS 7.0-1406"
+if property[:name] != "CentOS 7.0-1406"
 	describe file('/etc/grub.conf') do
 		it { should be_file }
 		it { should contain "tsc=reliable" }

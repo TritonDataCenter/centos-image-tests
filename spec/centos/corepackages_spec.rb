@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # Make sure we have the latest openssl to address HeartBleed bug
 # IMAGE-481
-if attr[:version].to_i < 20140709
+if property[:version].to_i < 20140709
 	describe package('openssl-1.0.1e-16.el6_5.7') do
   	it { should be_installed }
 	end
@@ -12,7 +12,7 @@ end
 # This will thow an error if openssl is newer but I want
 # to be explitily warned if teh version does not match
 # in future image versions.
-if attr[:version].to_i == 20140710 
+if property[:version].to_i == 20140710 
   describe package('openssl-1.0.1e-16.el6_5.14') do
     it { should be_installed }
   end
@@ -26,7 +26,7 @@ describe package('iputils') do
   it { should be_installed }
 end
 
-if attr[:name] != "CentOS 7.0-1406"
+if property[:name] != "CentOS 7.0-1406"
 	describe package('man') do
   	it { should be_installed }
 	end
@@ -37,7 +37,7 @@ else
 end
 
 # We use install sdc-vmtools in newer versions rather than the rpm package
-if attr[:version].to_i  < 20140818
+if property[:version].to_i  < 20140818
 	describe package('me-centos') do
   	it { should be_installed }
 	end
