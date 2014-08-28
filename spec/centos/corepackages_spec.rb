@@ -1,5 +1,12 @@
 require 'spec_helper'
 
+# Starting with 20140827
+if property[:version].to_i >= 20140827
+	describe package('1.0.1e-16.el6_5.15') do
+  	it { should be_installed }
+	end
+end
+
 # Make sure we have the latest openssl to address HeartBleed bug
 # IMAGE-481
 if property[:version].to_i < 20140709
