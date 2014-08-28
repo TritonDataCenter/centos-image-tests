@@ -48,12 +48,6 @@ describe file('/lib/smartdc/lib_smartdc_scripts.cfg') do
   it { should be_file }
 end
 
-describe file('/lib/smartdc/mdata-get') do
-  it { should be_file }
-  it { should be_executable }
-	it { should be_linked_to '/usr/sbin/mdata-get' }
-end
-
 describe file('/lib/smartdc/run-operator-script') do
   it { should be_file }
   it { should be_executable }
@@ -98,6 +92,12 @@ describe file('/usr/sbin/mdata-get') do
 	it { should be_executable }
 end
 
+describe file('/lib/smartdc/mdata-get') do
+  it { should be_file }
+  it { should be_executable }
+	it { should be_linked_to '/usr/sbin/mdata-get' }
+end
+
 describe file('/usr/sbin/mdata-list') do
   it { should be_file }
   it { should be_executable }
@@ -131,10 +131,4 @@ end
 describe file('/usr/share/man/man1/mdata-delete.1') do
   it { should be_file }
   it { should be_readable }
-end
-
-
-describe file('/lib/smartdc/mdata-get') do
-	it { should be_file }
-	it { should be_linked_to '/usr/sbin/mdata-get' }
 end
