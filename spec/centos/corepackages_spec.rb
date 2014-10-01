@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-# Starting with 20140827
-if property[:version].to_i >= 20140828
+# Starting with 20140828
+if property[:version].to_i == 20140828
 	describe package('openssl-1.0.1e-16.el6_5.15') do
   	it { should be_installed }
 	end
