@@ -19,3 +19,11 @@ end
 describe service('sshd') do
   it { should be_enabled }
 end
+
+describe service('ntpd') do
+  it { should be_enabled }
+end
+
+describe service('ntpdate') do
+  it { should be_enabled }
+end
