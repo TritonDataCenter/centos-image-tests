@@ -1,7 +1,0 @@
-centos-7:
-  :roles:
-    - centos
-  :name: CentOS 7.0-1406
-  :version: 20140818
-  :doc_url: http://wiki.joyent.com/jpc2/Centos
-

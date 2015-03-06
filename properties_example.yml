@@ -1,0 +1,13 @@
+centos-6:
+  :roles:
+    - centos
+  :name: CentOS 6.6
+  :version: 20150128 
+  :doc_url: https://docs.joyent.com/images/linux/centos 
+
+centos-7:
+  :roles:
+    - centos
+  :name: CentOS 7.0-1406
+  :version: 20150128 
+  :doc_url: https://docs.joyent.com/images/linux/centos 
