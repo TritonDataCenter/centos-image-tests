@@ -10,34 +10,50 @@ To run the tests you will need ruby (1.9.3+ or 2.0.0 should work) and rubygems i
 
 Install serverspec with
 
-`gem install serverspec`
+    gem install serverspec
 
-Add the name and attibutes of what you want to test to attributes.yml. Next, edit your `~/.ssh/config` file with the host information of the virtual machines you want to test. The name you chose for _Host_ in `~/.ssh/config should match what you have in attributes.yml. 
+Copy the `properties_example.yml` file to `properties.yml`
 
-For example, here's a attrubutes.yml file:
+Modify `properties.yml` with the name and properties you want to test. 
 
-``
-base-13.3.1:
-  :roles:
-    - base-common
-  :name: base
-  :base_version: 13.3.1
-  :doc_url: http://wiki.joyent.com/jpc2/SmartMachine+Base
-``
+Next, edit your `~/.ssh/config` file with the host information of the virtual machines you want to test. The name you chose for _Host_ in `~/.ssh/config` should match what you have in `properties.yml`. 
+
+For example, here's a `properties.yml` file:
+
+    centos-6:
+      :roles:
+        - centos
+      :name: CentOS 6.6
+      :version: 20150128
+      :doc_url: https://docs.joyent.com/images/linux/centos
+
+    centos-7:
+      :roles:
+        - centos
+      :name: CentOS 7.0-1406
+      :version: 20150128
+      :doc_url: https://docs.joyent.com/images/linux/centos
 
 And an example `~/.ssh/config` file:
 
-``
-Host base-13.3.1 
-  HostName XX.X.XXX.XXX
-  User root
-``
+    Host centos-7
+      HostName XX.X.XXX.XXX
+      User root
+
+    Host centos-6
+      HostName XX.X.XXX.XXX
+      User root
+    
 
 ## Running the tests
 
 To run the tests, run the following command (within this directory):
 
-`rake serverspec`
+    rake serverspec
+
+Or just:
+
+    rake
 
 More information on how to create serverspec tests can be found here:
 
