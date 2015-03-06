@@ -1,19 +1,39 @@
 require 'serverspec'
-require 'pathname'
 require 'net/ssh'
 require 'yaml'
 
-include Serverspec::Helper::Ssh
-include Serverspec::Helper::DetectOS
-include Serverspec::Helper::Properties
-
 properties = YAML.load_file('properties.yml')
 
-RSpec.configure do |c|
-  c.host  = ENV['TARGET_HOST']
-  set_property properties[c.host]
-  options = Net::SSH::Config.for(c.host)
-  user    = options[:user] || Etc.getlogin
-  c.ssh   = Net::SSH.start(c.host, user, options)
-  c.os    = backend.check_os
+set :backend, :ssh
+
+
+if ENV['ASK_SUDO_PASSWORD']
+  begin
+    require 'highline/import'
+  rescue LoadError
+    fail "highline is not available. Try installing it."
+  end
+  set :sudo_password, ask("Enter sudo password: ") { |q| q.echo = false }
+else
+  set :sudo_password, ENV['SUDO_PASSWORD']
 end
+
+host = ENV['TARGET_HOST']
+set_property properties[host]
+
+options = Net::SSH::Config.for(host)
+
+options[:user] ||= Etc.getlogin
+
+set :host,        options[:host_name] || host
+set :ssh_options, options
+
+# Disable sudo
+# set :disable_sudo, true
+
+
+# Set environment variables
+# set :env, :LANG => 'C', :LC_MESSAGES => 'C' 
+
+# Set PATH
+# set :path, '/sbin:/usr/local/sbin:$PATH'
