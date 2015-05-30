@@ -5,7 +5,7 @@ require 'spec_helper'
 # Note: With CentOS 7, systemd enables the service automatically
 # when you add console=ttyS0 on the kernel command line
 # http://0pointer.de/blog/projects/serial-console.html
-if property[:name] != "CentOS 7.0-1406"
+if property[:name].include? "CentOS 6"
   describe file('/etc/init/ttyS0.conf') do
     it { should be_file }
     it { should contain "stop on runlevel [S016]" }

@@ -33,7 +33,7 @@ describe package('iputils') do
   it { should be_installed }
 end
 
-if property[:name] != "CentOS 7.0-1406"
+if property[:name].include? "CentOS 6"
 	describe package('man') do
   	it { should be_installed }
 	end
