@@ -57,6 +57,13 @@ describe package('ntpdate') do
   it { should be_installed }
 end
 
+# The openssh-clients package is not installed as part of a minimal
+# CentOS 6 install. Without it, scp is not available.
+# Let's make sure the pacakge is installed :)
+describe package('openssh-clients') do
+	it { should be_installed }
+end
+
 describe package('parted') do
   it { should be_installed }
 end
