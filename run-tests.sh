@@ -186,7 +186,7 @@ $INST_NAME:
 PROPYML
 
     export TARGET_HOST_NAME=$(triton -p ${PROFILE} instance ip $INST_NAME)
-    export TARGET_USER_NAME=ubuntu
+    export TARGET_USER_NAME=root
     rake serverspec
 
     echo "###########################"
