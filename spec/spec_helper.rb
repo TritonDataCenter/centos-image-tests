@@ -23,8 +23,6 @@ set_property properties[host]
 
 options = Net::SSH::Config.for(host)
 
-options[:user] ||= Etc.getlogin
-
 set :host,        options[:host_name] || host
 
 # Get HostName and User value from Env Vars if available
