@@ -114,7 +114,7 @@ get_networks() {
     
     # Trying using a fabric network instead
     if [[ -z "$PRIVATE_NETWORK" ]]; then
-        PRIVATE_NETWORK=$(triton -p ${PROFILE} network list -j | json -ag id -c 'this.public === false | head -1')
+        PRIVATE_NETWORK=$(triton -p ${PROFILE} network list -j | json -ag id -c 'this.public === false' | head -1)
     fi
     
     echo "    Public:  $PUBLIC_NETWORK"
