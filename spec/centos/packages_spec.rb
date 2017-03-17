@@ -27,6 +27,10 @@ describe package('nodejs') do
   it { should be_installed }
 end
 
+describe command('npm list -g json') do
+  its(:exit_status) { should eq 0 }
+end
+
 describe package('ntp') do
   it { should be_installed }
 end
