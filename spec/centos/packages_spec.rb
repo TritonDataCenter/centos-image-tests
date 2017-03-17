@@ -29,6 +29,11 @@ describe package('acpid') do
   it { should be_installed }
 end
 
+describe package('epel-release') do
+  it { should be_installed }
+end
+
+
 describe package('iputils') do
   it { should be_installed }
 end
@@ -49,6 +54,11 @@ if property[:version].to_i  < 20140818
   	it { should be_installed }
 	end
 end
+
+describe package('nodejs') do
+  it { should be_installed }
+end
+
 describe package('ntp') do
   it { should be_installed }
 end
