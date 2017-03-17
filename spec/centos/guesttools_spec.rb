@@ -1,23 +1,8 @@
 require 'spec_helper'
 
-# Ensures that smartdc guest tools are installed
-# Not included in sdc-vmtools which we began using in newer builds
-if property[:version].to_i  < 20140818
-	describe file('/etc/acpi/events/powerbtn-acpi-support') do
-  	it { should be_file }
-  	it { should be_mode 644 }
-	end
-
-	describe file('/lib/smartdc/redhat-powerbtn-acpi-support.sh') do
-  	it { should be_file }
-  	it { should be_executable }
-	end
-end
-
 describe file('/lib/smartdc') do
   it { should be_directory }
 end
-
 
 # Since 2.6.0 See IMAGE-446.
 describe file('/lib/smartdc/firstboot') do
@@ -69,20 +54,10 @@ describe file('/lib/smartdc/set-root-authorized-keys') do
 end
 
 ## Ensure the appropriate smartdc guest tools are run each boot
-
-# Newer builds use sdc-vmtools
-if property[:version].to_i  < 20140818
-	describe file('/etc/rc.d/rc.local') do
-  	it { should be_file }
-  	it { should be_executable }
-		it { should contain "(/lib/smartdc/joyent_rc.local)" }
-	end	
-else
-  describe file('/etc/rc.d/rc.local') do
-    it { should be_file }
-    it { should be_executable }
-		it { should be_linked_to '/lib/smartdc/joyent_rc.local' }
-	end
+describe file('/etc/rc.d/rc.local') do
+  it { should be_file }
+  it { should be_executable }
+	it { should be_linked_to '/lib/smartdc/joyent_rc.local' }
 end
 
 # Since 2.6.0 See IMAGE-426.
